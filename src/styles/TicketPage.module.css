@@ -1,0 +1,161 @@
+/* General Container and Main Layout */
+.container {
+    font-family: sans-serif;
+    background-color: #f0f2f5; /* Light gray background, like the image */
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.main {
+    width: 100%;
+    max-width: 800px; /* Maximum width for larger screens */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column; /* Stack the app banner and ticket card */
+    align-items: center; /* Center items horizontally */
+}
+
+/* App Download Banner Section */
+.appBanner {
+    background-color: #fff; /* White background */
+    color: #333; /* Darker text color */
+    padding: 20px;
+    border-radius: 15px; /* More rounded corners */
+    text-align: center;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    width: 100%; /* Take full width */
+    max-width: 500px; /* Limit width to match the image */
+}
+
+.bannerTitle {
+    font-size: 1.2rem; /* Slightly smaller title */
+    margin-bottom: 10px;
+}
+
+.bannerSubtitle {
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.storeButtons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.storeButtons a {
+    display: inline-block;
+}
+
+.storeButtons img {
+    height: 40px; /* Adjust image height */
+}
+
+/* Ticket Card Styles */
+.ticketCard {
+    background: linear-gradient(135deg, #673ab7, #3f51b5); /* Gradient background */
+    color: white;
+    border-radius: 20px; /* More rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+    overflow: hidden;
+    width: 100%; /* Take full width */
+    max-width: 500px; /* Limit width to match the image */
+}
+
+/* Header Section (Event and Attendee Info) */
+.header {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.3); /* Dashed white line */
+}
+
+.eventName {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+    font-weight: bold;
+    letter-spacing: 1px; /* Add letter spacing */
+}
+
+.attendeeName {
+    font-size: 1rem;
+    opacity: 0.8; /* Slightly transparent */
+}
+
+/* Details Section (Date, Time, Location) */
+.details {
+    padding: 20px;
+    font-size: 0.9rem;
+}
+
+.detailItem {
+    margin-bottom: 8px;
+}
+
+.details strong {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+/* QR Code Section */
+.qrSection {
+    padding: 20px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent white */
+}
+
+.qrCodeWrapper {
+    margin-bottom: 10px;
+    display: inline-block;
+    background-color: white; /* White background for the QR code */
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.readableCode {
+    font-size: 1rem;
+    opacity: 0.8;
+    letter-spacing: 1px;
+}
+
+/* Footer Section (Ticket Number) */
+.footer {
+    padding: 15px;
+    text-align: center;
+    border-top: 1px dashed rgba(255, 255, 255, 0.3); /* Dashed white line */
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* Media Query for Responsiveness (Smaller Screens) */
+@media (max-width: 600px) {
+    .main {
+        padding: 10px;
+    }
+
+    .appBanner {
+        padding: 15px;
+        max-width: 100%; /* Take full width on mobile */
+    }
+
+    .bannerTitle {
+        font-size: 1.1rem;
+    }
+
+    .bannerSubtitle {
+        font-size: 0.8rem;
+    }
+
+    .ticketCard {
+        max-width: 100%; /* Take full width on mobile */
+    }
+
+    .details {
+        padding: 15px;
+    }
+
+    
+}

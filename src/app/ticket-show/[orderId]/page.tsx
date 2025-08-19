@@ -1,5 +1,5 @@
-import { notFound } from 'next/navigation';
-import TicketView from './TicketView';
+import { notFound } from "next/navigation";
+import TicketView from "./TicketView";
 
 interface VenueDetails {
   name: string;
@@ -7,7 +7,7 @@ interface VenueDetails {
 }
 
 interface TicketDetails {
-  eventName:string;
+  eventName: string;
   attendeeName: string;
   eventDate: string;
   eventTime: string;
@@ -17,31 +17,28 @@ interface TicketDetails {
   readableCode: string;
 }
 
-interface PageParams {
-  params: {
-    orderId: string;
-  };
-}
-
 async function getTicketDetails(orderId: string): Promise<TicketDetails | null> {
   const apiUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/tickets/public/${orderId}/details`;
 
   try {
-    const res = await fetch(apiUrl, { cache: 'no-store' });
-
-    if (!res.ok) {
-      return null;
-    }
-
+    const res = await fetch(apiUrl, { cache: "no-store" });
+    if (!res.ok) return null;
     return res.json();
   } catch (error) {
     console.error("API Fetch Error:", error);
     return null;
   }
 }
+type Params = {
+  orderId: string;
+};
 
-export default async function TicketShowPage({ params }: PageParams) {
-  const { orderId } =await params;
+export default async function TicketShowPage({
+  params,
+}: {
+  params: Params;
+}) {
+  const { orderId } = params;
   const ticket = await getTicketDetails(orderId);
 
   if (!ticket) {

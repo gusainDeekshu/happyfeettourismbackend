@@ -18,9 +18,6 @@ export const metadata: Metadata = {
   title: "BeastDrive Adventure Tickets | Survival Run",
   description:
     "Book your tickets for BeastDrive’s Survival Run adventure event. Secure your spot and experience the ultimate adrenaline-filled challenge with BeastDrive.",
-  icons: {
-    icon: "/logo.png", // or "/favicon.png"
-  },
 };
 
 

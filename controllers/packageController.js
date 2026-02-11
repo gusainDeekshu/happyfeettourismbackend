@@ -15,31 +15,36 @@ exports.getPackages = async (req, res) => {
 // @route   POST /api/packages
 exports.createPackage = async (req, res) => {
   try {
-    const { title, price, location, duration, description, itinerary, category, imageFile } = req.body;
+    const { title, price, location, duration, description, itinerary, category } = req.body;
 
-    // 1. Upload the image to Cloudinary
-    // Note: imageFile should be a base64 string or file path from your middleware
+    // image from multer
+    const imageFile = req.file?.path;
+
+    if (!imageFile) {
+      return res.status(400).json({ message: 'Image file is required' });
+    }
+
+    // Upload to Cloudinary
     const uploadResponse = await cloudinary.uploader.upload(imageFile, {
       folder: 'happy_feet_tourism/packages',
     });
 
-    // 2. Create the package with the Cloudinary Secure URL
     const newPackage = await Package.create({
       title,
-      slug: title.toLowerCase().split(' ').join('-'),
+      slug: title.toLowerCase().replace(/\s+/g, '-'),
       price,
       location,
       duration,
       description,
       category,
-      itinerary: JSON.parse(itinerary), // Parse if sent as string from FormData
-      image: uploadResponse.secure_url, // This is the Cloudinary URL
+      itinerary: JSON.parse(itinerary || '[]'),
+      image: uploadResponse.secure_url,
     });
 
-    res.status(201).json(savedPackage);
+    res.status(201).json(newPackage);
   } catch (error) {
     console.error('Upload/Save Error:', error);
-    res.status(400).json({ message: error.message });
+    res.status(500).json({ message: error.message });
   }
 };
 // Update an existing package (Admin)

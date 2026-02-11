@@ -4,7 +4,8 @@ const {
   getPackages, 
   createPackage, 
   updatePackage, 
-  deletePackage 
+  deletePackage,
+  getPackageBySlug 
 } = require('../controllers/packageController');
 const { protect } = require('../middleware/authMiddleware');
 
@@ -15,5 +16,5 @@ router.get('/', getPackages);
 router.post('/', protect, createPackage);
 router.put('/:id', protect, updatePackage);
 router.delete('/:id', protect, deletePackage);
-
+router.get('/:slug', getPackageBySlug);
 module.exports = router;

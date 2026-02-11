@@ -82,3 +82,17 @@ exports.deletePackage = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+exports.getPackageBySlug = async (req, res) => {
+  try {
+    const pkg = await Package.findOne({ slug: req.params.slug });
+    
+    if (!pkg) {
+      return res.status(404).json({ message: "Package not found" });
+    }
+    
+    res.status(200).json(pkg);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};

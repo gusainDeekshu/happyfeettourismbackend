@@ -8,7 +8,8 @@ const authRoutes = require('./routes/authRoutes');
 const packageRoutes = require('./routes/packageRoutes'); // New
 const contactRoutes = require('./routes/contactRoutes'); 
 const uploadRoutes = require('./routes/uploadRoutes');
-
+const galleryRoutes = require('./routes/galleryRoutes');
+const adminGalleryRoutes = require('./routes/adminGalleryRoutes');
 connectDB();
 const app = express();
 
@@ -23,7 +24,11 @@ app.use('/api/auth', authRoutes);
 app.use('/api/packages', packageRoutes);
 app.use('/api/contact', contactRoutes);
 app.use('/api/upload', uploadRoutes);
+// Public User Routes
+app.use('/api/gallery', galleryRoutes);
 
+// Protected Admin Routes
+app.use('/api/admin/gallery', adminGalleryRoutes);
 app.get('/', (req, res) => res.send('Happy Feet Tourism API Running...'));
 
 app.use(errorHandler);

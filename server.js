@@ -14,7 +14,7 @@ connectDB();
 const app = express();
 
 app.use(cors({
-  origin: ['http://localhost:3000','http://localhost:3001', 'https://happy-feet-tourism.vercel.app'], 
+  origin: ['http://localhost:3000','http://localhost:3001', 'https://happy-feet-tourism.vercel.app','https://happyfeetadmin-t7tj.vercel.app'], 
   credentials: true
 }));
 app.use(express.json());

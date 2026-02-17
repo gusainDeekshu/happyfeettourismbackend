@@ -15,6 +15,7 @@ exports.createContact = async (req, res) => {
 // @route   GET /api/inquiries
 exports.getAllContacts = async (req, res) => {
   try {
+    console.log('[Get All Contacts] Query Params:', req.query);
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
     const skip = (page - 1) * limit;
@@ -69,6 +70,7 @@ exports.getAllContacts = async (req, res) => {
 // @desc    Update status (Admin Panel)
 // @route   PUT /api/inquiries/:id
 exports.updateContactStatus = async (req, res) => {
+  console.log(`[Update Contact Status] ID: ${req.params.id} | New Status: ${req.body.status}`);
   const { status } = req.body;
   try {
     const contact = await Contact.findByIdAndUpdate(

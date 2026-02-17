@@ -1,0 +1,7 @@
+MONGO_URI=mongodb://localhost:27017/happyfeetdb
+# JWT_SECRET=your_super_secret_key_123
+JWT_SECRET=your_jwt_secret_key
+
+CLOUDINARY_CLOUD_NAME=dsjhfbedsjknfk
+CLOUDINARY_API_KEY=418418498498489*/8
+CLOUDINARY_API_SECRET=hbvdshgcbdesbjcds

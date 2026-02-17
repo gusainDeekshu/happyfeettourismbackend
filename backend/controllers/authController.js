@@ -12,7 +12,6 @@ exports.loginAdmin = async (req, res) => {
   const { username } = req.body;
 
   try {
-    console.log(`[ADMIN LOGIN] Attempt → username: ${username}`);
 
     const admin = await Admin.findOne({ username });
 
@@ -36,7 +35,6 @@ exports.loginAdmin = async (req, res) => {
       });
     }
 
-    console.log(`[ADMIN LOGIN SUCCESS] username: ${username}`);
 
     res.json({
       _id: admin._id,
@@ -61,7 +59,7 @@ exports.registerAdmin = async (req, res) => {
   const adminExists = await Admin.findOne({ username });
 
   if (adminExists) return res.status(400).json({ message: 'Admin already exists' });
-
+console.log(`[ADMIN REGISTER] Attempt → password: ${password}`);
   const admin = await Admin.create({ username, password });
   if (admin) {
     res.status(201).json({

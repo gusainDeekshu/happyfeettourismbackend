@@ -12,7 +12,6 @@ exports.loginAdmin = async (req, res) => {
   const { username } = req.body;
 
   try {
-    console.log(`[ADMIN LOGIN] Attempt → username: ${username}`);
 
     const admin = await Admin.findOne({ username });
 
@@ -36,7 +35,6 @@ exports.loginAdmin = async (req, res) => {
       });
     }
 
-    console.log(`[ADMIN LOGIN SUCCESS] username: ${username}`);
 
     res.json({
       _id: admin._id,

@@ -13,8 +13,19 @@ const adminGalleryRoutes = require('./routes/adminGalleryRoutes');
 connectDB();
 const app = express();
 
+const allowedOrigins = [
+  process.env.FRONTEND_URL,
+  process.env.ADMIN_URL,
+  process.env.USER_URL
+];
 app.use(cors({
-  origin: ['http://localhost:3000','http://localhost:3001', 'https://happy-feet-tourism.vercel.app','https://happyfeetadmin-t7tj.vercel.app'], 
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true
 }));
 app.use(express.json());

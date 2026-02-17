@@ -5,3 +5,7 @@ JWT_SECRET=your_jwt_secret_key
 CLOUDINARY_CLOUD_NAME=dsjhfbedsjknfk
 CLOUDINARY_API_KEY=418418498498489*/8
 CLOUDINARY_API_SECRET=hbvdshgcbdesbjcds
+
+FRONTEND_URL=http://localhost:3000
+ADMIN_URL=http://localhost:3001
+USER_URL=http://localhost:3002

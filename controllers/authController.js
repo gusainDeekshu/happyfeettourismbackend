@@ -158,26 +158,16 @@ exports.changePassword = async (
 ) => {
   try {
 
-    console.log(
-      '\n========== CHANGE PASSWORD START =========='
-    );
 
-    console.log(
-      '[REQUEST BODY]',
-      req.body
-    );
 
+ 
     const {
       username,
       oldPassword,
       newPassword,
     } = req.body;
 
-    console.log(
-      '[STEP 1] Searching admin:',
-      username
-    );
-
+   
     // FIND ADMIN
     const admin =
       await Admin.findOne({
@@ -187,28 +177,15 @@ exports.changePassword = async (
     // ADMIN NOT FOUND
     if (!admin) {
 
-      console.log(
-        '[ERROR] Admin not found'
-      );
+    
 
       return res.status(404).json({
         message: 'Admin not found',
       });
     }
 
-    console.log(
-      '[STEP 2] Admin found:',
-      admin.username
-    );
 
-    console.log(
-      '[STEP 3] Stored hashed password:',
-      admin.password
-    );
-
-    console.log(
-      '[STEP 4] Comparing old password'
-    );
+   
 
     // VERIFY OLD PASSWORD
     const isMatch =
@@ -217,17 +194,11 @@ exports.changePassword = async (
         admin.password
       );
 
-    console.log(
-      '[COMPARE RESULT]',
-      isMatch
-    );
-
+   
     // WRONG PASSWORD
     if (!isMatch) {
 
-      console.log(
-        '[ERROR] Old password incorrect'
-      );
+     
 
       return res.status(401).json({
         message:
@@ -235,13 +206,6 @@ exports.changePassword = async (
       });
     }
 
-    console.log(
-      '[STEP 5] Old password verified'
-    );
-
-    console.log(
-      '[STEP 6] Generating salt'
-    );
 
     // HASH NEW PASSWORD
    
@@ -253,14 +217,8 @@ exports.changePassword = async (
 
     await admin.save();
 
-    console.log(
-      '[SUCCESS] Password updated successfully'
-    );
 
-    console.log(
-      '========== CHANGE PASSWORD END ==========\n'
-    );
-
+ 
     // SUCCESS RESPONSE
     res.status(200).json({
       message:
